@@ -2,11 +2,9 @@ name: Build and Tests
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, main ]
   pull_request:
-    branches: [ master ]
-  schedule:   
-    - cron: '0 12 * * *'
+    branches: [ master, main ]
 
 jobs:
   build:
@@ -20,7 +18,7 @@ jobs:
         node-version: 22
         cache: 'npm'
     - run: npm install      
-    - run: npm run coverage
+    - run: npm ci
 
   sonarcloud:
     name: Run SonarCloud
